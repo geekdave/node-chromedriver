@@ -25,6 +25,9 @@ if (platform === 'linux') {
   }
 } else if (platform === 'darwin') {
   platform = 'mac32'
+} else if (platform === 'sunos') {
+  console.log("Skipping install on SmartOS");
+  return;
 } else if (platform !== 'win32') {
   console.log('Unexpected platform or architecture:', process.platform, process.arch)
   process.exit(1)

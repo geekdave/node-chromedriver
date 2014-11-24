@@ -2,3 +2,4 @@
 /lib/chromedriver
 /tmp
 npm-debug.log
+.idea
