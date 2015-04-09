@@ -17,6 +17,11 @@ var libPath = path.join(__dirname, 'lib', 'chromedriver')
 var downloadUrl = (process.env.CHROMEDRIVER_CDNURL || 'http://chromedriver.storage.googleapis.com') + '/%s/chromedriver_%s.zip'
 var platform = process.platform
 
+if (process.env.SKIP_CHROMEDRIVER_INSTALL) {
+  console.log("Skipping install due to SKIP_CHROMEDRIVER_INSTALL being set");
+  return;
+}
+
 if (platform === 'linux') {
   if (process.arch === 'x64') {
     platform += '64'
@@ -27,8 +32,6 @@ if (platform === 'linux') {
   platform = 'mac32'
 } else if (platform === 'sunos') {
   console.log("Skipping install on SmartOS");
-  return;
-} else if (process.env.SKIP_CHROMEDRIVER_INSTALL) {
   return;
 } else if (platform !== 'win32') {
   console.log('Unexpected platform or architecture:', process.platform, process.arch)
